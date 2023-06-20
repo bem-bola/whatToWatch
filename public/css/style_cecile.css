@@ -1,0 +1,231 @@
+/* import de police */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+/* petite police */
+.small_font{
+    font-size: 0.9rem;
+}
+
+.text-white{
+    color: #4c5a67;
+    font-family: 'Lato', sans-serif;
+}
+
+.text-grey{
+    color: #989898;
+    font-family: 'Lato', sans-serif;
+}
+
+/* majuscule */
+.uppercase{
+    text-transform: uppercase;
+}
+
+
+/* SHOW MOVIE */
+/* body de la page arrière plan */
+#show_movie {
+    background-color: #0E1111!important;
+}
+
+/* section header avec image header et video en pop up */
+
+/* div pour l'image du header */
+.header_show_movie{
+    height: 60vh;  
+}
+
+/* bouton play header video youtube en arriere plan */
+#button_header_movie{
+    width: 100%;
+    border: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    height: 55vh;
+    z-index: 1;
+    background-color: #0E1111;
+}
+
+/* image du header */
+#img_header_movie{
+    width: 100%;
+    background-position: center 45%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    cursor: pointer;
+    height: 60vh;
+    z-index: 2;
+    margin-top: 135px;
+}
+
+/* logo du bouton play */
+#logo_play_video{
+    width: 6rem;
+    position: relative;
+    bottom: 20rem;
+    z-index: 3;
+}
+
+/* video youtube */
+#video_header{
+    position: absolute;
+    display: none;
+    z-index: 6;
+    width: 560px ;
+    height: 315px;
+}
+
+/* partie descritpion movie */
+.icon_plateforme_show_movie{
+    width: 4rem;
+    border-radius: 5px;
+}
+
+#descriptif_movie{
+    position: relative;
+    bottom: 3rem;
+    z-index:2;
+    background-color: #1e272e;
+    border-radius: 2%;
+}
+
+.descriptif_right_movie{
+    padding-top: 2rem
+}
+
+.container_img_affiche{
+    height: auto;
+    width: 100%;
+}
+
+#img_affiche_movie{
+    height: auto;
+    width: 100%;
+    padding-top: 2rem ;
+}
+
+.ou_regarder{
+border: 2px solid #1dd1a1;
+border-radius: 10px;
+}
+
+.btn_movie_show .btn{
+    margin-top: 3rem;
+}
+
+.div_buttons_sous_affiche{
+    height: 70px;
+    width:100%;
+    background-color: #0E1111;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.buttons_sous_affiche{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    margin:0;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.div_buttons_sous_affiche button:focus {
+    outline:0;
+}
+
+.icon_click{
+    color:#1dd1a1!important;
+}
+
+.description_for_smartphone_container{
+    display: none!important;
+}
+
+.affichage_bouton_favori_smartphone{
+    display:none!important;
+}
+
+@media screen and (max-width: 1040px) {
+        .left_side_show_movie{
+            display: none!important;
+        }
+        .description_for_smartphone_container{
+            display:block!important;
+        }
+        .affichage_bouton_favori_smartphone{
+            display:block!important;
+        }
+    }
+
+
+/* FIN SHOW MOVIE */
+
+/* DEBUT SEARCH PAGE  */
+
+#search_page{
+    background-color: #0E1111;
+    min-height: 80vh;
+}
+
+.search_page{
+    padding-top: 50px;
+    padding-right: 50px;
+}
+
+#affiche_search_page{
+    width: 100%;
+    height: aut;
+}
+
+.search_descritption{
+    margin-left:20px;
+}
+
+/* FIN SEARCH PAGE */
+
+/* barre de recherche */
+.input_group{
+    max-height: 10px;
+}
+
+.form-outline{
+    width:400px;
+}
+
+.input_group{
+    width:600px;
+}
+
+.btn{
+    background-color: #1dd1a1!important;
+}
+
+.btn:focus{
+    outline:0!important;
+}
+
+#search_titles{
+    background-color: #1e272e;
+    border: 1px solid #989898;
+    color: #4c5a67;
+}
+
+.navbar-brand img{
+    width: 110px;
+    height: auto;
+    margin: 0 5px;
+}
+
+#form_search{
+    margin-left:50px;
+}

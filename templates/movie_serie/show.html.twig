@@ -1,0 +1,238 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ movie_serie.title }}{% endblock %}
+
+{% block body %}
+    <div class"header_show_movie col-12 d-flex justify-content-center mt-10">
+        <button id="button_header_movie" class="d-flex flex-column justify-content-center align-items-center">
+            <img src="{{ asset('images/uploads/' ~ movie_serie.imgHeader) }}" alt="{{ movie_serie.title }}" id="img_header_movie">
+            <img src={{ asset('images/logo_play_video.png') }} alt="" id="logo_play_video">
+            <iframe id="video_header" width="560" height="315" src="{{ movie_serie.bandeAnnonce }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </button>
+    </div>
+        
+{# partie descriptif du film #}
+    <div class="container col-12 col-md-10 d-flex justify-content-center mt-7" id="descriptif_movie">
+    {# partie gauche avec l'affiche #}
+        <div class="container flex-column col-3 col-lg-3 align-items-center left_side_show_movie">
+                <div class="container_img_affiche d-flex justify-content-center">
+                    <img src="{{ asset('images/uploads/' ~ movie_serie.imgAffiche) }}" alt="{{ movie_serie.title }}" id="img_affiche_movie">
+                </div>
+                {% if app.user  %}
+                <div class="div_buttons_sous_affiche ">
+                    <button class="col-4 buttons_sous_affiche" onclick="console.log('vu bouton')">
+                        <i class="bi bi-check2" style="color:#989898"></i>
+                        <span class="text-grey">Vu</span>
+                    </button>
+                    <button class="col-4 buttons_sous_affiche d-flex flex-column justify-content-center align-items-center">
+                        <i class="bi bi-bookmark-plus-fill" style="color:#989898"></i>
+                        <span class="text-grey">A voir</span>
+                    </button>
+                    
+                     <button class="col-4 buttons_sous_affiche" id="button_favori">
+                        <i class="bi bi-heart-fill {% for favoris in favori %}
+                                                        {% if favoris.id is same as movie_serie.id %}
+                                                                icon_click
+                                                        {% endif %}
+                                                    {% endfor %}" style="color:#989898"></i>
+                        <span class="text-grey      {% for favoris in favori %}
+                                                        {% if favoris.id is same as movie_serie.id %}
+                                                                icon_click
+                                                    {% endif %}         
+                 {% endfor %} " id="span_favori">Favoris</span>
+                    </button>
+                </div>
+                 {% else %}
+                    <div class="div_buttons_sous_affiche"><a class="nav-link active text-grey-custom" aria-current="page" href="{{path('app_login')}}">Se connecter ici pour acceder à ses favoris</a></div>
+                 {% endif %}
+
+                <div class="container d-flex mt-4">
+                    <div class="d-flex flex-column align-items-start col-6">
+                        
+                         {% for genre in  movie_serie.genres %} 
+                            
+                            {% if loop.first == true %}
+                                <div class="text-grey uppercase">genres : </div>
+                            {% endif %}
+
+                            {% if loop.first != true %}
+                                <div class="text-grey uppercase"><br></div>
+                            {% endif %}
+
+                            {% if genre.name == "science-fiction" %}
+                                <div class="text-grey uppercase"><br></div>
+                            {% endif %}
+                        {% endfor %}
+                        <div class="text-grey uppercase">DUREE : </div>
+                        <div class="text-grey uppercase">ORIGINE : </div>
+
+            
+                        {% if movie_serie.type == 'serie' %}
+                            <div class="text-grey uppercase">SAISONS : </div>
+                        {% endif %}
+                        <div class="text-grey">TYPE : </div>
+                    </div>
+                    <div class="d-flex flex-column align-items-end col-6">
+                       
+                        {% for genre in  movie_serie.genres %}
+                            <div class="text-white"> {{genre.name}}</div>
+                        {% endfor %}
+                        
+                        <div class="text-white">{{ transformMinutesHours(movie_serie.duree) }}</div>
+                        <div class="text-white">{{ movie_serie.origine }}</div>
+                        {% if movie_serie.type == 'serie' %}
+                        <div class="text-white">{{ movie_serie.nbSaison }}</div>
+                        {% endif %}
+                        <div class="text-white">{{ movie_serie.type }}</div>
+                    </div>
+                </div>
+        </div>
+{# fin partie gauche #}
+{# debut partie droite #}
+        <div class="col-12 col-lg-7 d-flex flex-column descriptif_right_movie">
+        {# RESPONSIVE PARTIE AFFICHE UNIQUEMENT SUR PHONE #}
+            <h1 class="text-white">{{ movie_serie.title }}<span class="small_font">   ({{ movie_serie.dateSortieAt ? movie_serie.dateSortieAt|date('Y') : '' }})<span></h1>
+
+          <section class="affichage_bouton_favori_smartphone mt-3">
+                {% if app.user  %}
+                <div class="div_buttons_sous_affiche ">
+                    <button class="col-4 buttons_sous_affiche" onclick="console.log('vu bouton')">
+                        <i class="bi bi-check2" style="color:#989898"></i>
+                        <span class="text-grey">Vu</span>
+                    </button>
+                    <button class="col-4 buttons_sous_affiche d-flex flex-column justify-content-center align-items-center">
+                        <i class="bi bi-bookmark-plus-fill" style="color:#989898"></i>
+                        <span class="text-grey">A voir</span>
+                    </button>
+                    
+                     <button class="col-4 buttons_sous_affiche" id="button_favori">
+                        <i class="bi bi-heart-fill {% for favoris in favori %}
+                                                        {% if favoris.id is same as movie_serie.id %}
+                                                                icon_click
+                                                        {% endif %}
+                                                    {% endfor %}" style="color:#989898"></i>
+                        <span class="text-grey      {% for favoris in favori %}
+                                                        {% if favoris.id is same as movie_serie.id %}
+                                                                icon_click
+                                                    {% endif %}         
+                 {% endfor %} " id="span_favori">Favoris</span>
+                    </button>
+                </div>
+                 {% else %}
+                    <div class="div_buttons_sous_affiche"><a class="nav-link active text-grey-custom" aria-current="page" href="{{path('app_login')}}">Se connecter ici pour acceder à ses favoris</a></div>
+                 {% endif %}
+            </section>
+        {# FIN RESPONSIVE PARTIE AFFICHE UNIQUEMENT SUR PHONE #}
+
+            <div class="mt-5 ou_regarder">
+                <p class="text-grey uppercase m-2">Regarder maintenant :</p>
+                <a href="{{ movie_serie.lienRedirection }}" target="_blank">
+                {% if movie_serie.plateforme == 'prime_video' %}
+                <img src="{{ asset('images/logo/prime_video.png') }}" class="icon_plateforme_show_movie m-2">
+                {% elseif movie_serie.plateforme == 'netflix' %}
+                <img src="{{ asset('images/logo/netflix.svg') }}" class="icon_plateforme_show_movie m-2">
+                {% elseif movie_serie.plateforme == 'disney' %}
+                <img src="{{ asset('images/logo/disney.png') }}" class="icon_plateforme_show_movie m-2">
+                 {% elseif movie_serie.plateforme == 'youtube' %}
+                <img src="{{ asset('images/logo/youtube.jpg') }}" class="icon_plateforme_show_movie m-2">
+                {% endif %}
+                </a>
+            </div>
+            <div class="mt-3">
+                <div class="text-grey uppercase">Résumé :</div>
+                <div class="text-white small_font">{{ movie_serie.description}}</div>
+            </div>
+            <div class="mt-3">
+                <div class="text-grey uppercase">Réalisateur :</div>
+                <div class="text-white small_font">{{ movie_serie.realisateur }}</div>
+            </div>
+            <div class="mt-3">
+                <div class="text-grey uppercase">Acteur :</div>
+                <div class="text-white small_font">{{ movie_serie.acteur }}</div>
+            </div>
+
+            <section class="description_for_smartphone_container">
+                    <div class="mt-3">
+                        
+                         {% for genre in  movie_serie.genres %} 
+                            
+                            {% if loop.first == true %}
+                                <div class="text-grey uppercase">genres : </div>
+                            {% endif %}
+                        {% endfor %}
+                            {% for genre in  movie_serie.genres %}
+                                <div class="text-white small_font"> {{genre.name}}</div>
+                            {% endfor %}
+                    </div>    
+                    <div class="mt-3">    
+                            <div class="text-grey uppercase ">DUREE : </div>
+                            <div class="text-white small_font">{{ transformMinutesHours(movie_serie.duree) }}</div>
+                    </div>    
+                    <div class="mt-3">    
+                            <div class="text-grey uppercase">ORIGINE : </div>
+                            <div class="text-white small_font">{{ movie_serie.origine }}</div>
+                    </div>    
+                    <div class="mt-3">    
+                        {% if movie_serie.type == 'serie' %}
+                            <div class="text-grey uppercase">SAISONS : </div>
+                        {% endif %}
+                        {% if movie_serie.type == 'serie' %}
+                            <div class="text-white small_font">{{ movie_serie.nbSaison }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="mt-3">    
+                            <div class="text-grey">TYPE : </div>
+                            <div class="text-white small_font">{{ movie_serie.type }}</div>
+                    </div>                       
+            </section>
+
+            <div class="mt-3">
+                <div class="text-grey uppercase">bande annonce :</div>
+                <div class="mt-2 d-flex justify-content-center align-items-center">
+                    <iframe width="660" height="415" src="{{ movie_serie.bandeAnnonce }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="btn_movie_show m-2 d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary"> <a class="text-white" href="{{ path('home') }}">Retour à l'accueil</a></button>
+                {% if is_granted('ROLE_ADMIN') %}
+                <button type="button" class="btn btn-secondary"> <a class="text-white" href="{{ path('movie_serie_edit', {'id': movie_serie.id}) }}">Modification</a></button>
+                <button type="button" class="btn btn-secondary"> <a class="text-white" href="{{ path('movie_serie_new') }}">Ajout d'un film</a></button>
+                 {{ include('movie_serie/_delete_form.html.twig') }}
+                 {% endif %}
+            </div>
+        </div>
+{# fin partie droite #}
+    </div>
+{# fin descriptif de film #}
+<script>
+ 
+
+$(document).ready(function () {
+    console.log("start favori")
+    
+    $('#button_favori').click(function () {
+        // function addFavori(){
+        let movieSerieId = '{{ movie_serie.id }}';
+        let userId = '{{ userId }}';
+
+    if(userId !== null){
+            $.ajax({
+                method: "PUT",
+                url: "/movie/serie/" + movieSerieId + '/action/favori',
+                data: { userId: userId },
+            })
+                .done(function (msg) {
+                   // alert("FAVORI " + msg);
+                     $(".bi-heart-fill").addClass("icon_click");
+                     $("#span_favori").addClass("icon_click");
+                    // changer la classe en récupérant via un getId
+                });
+            }
+        });
+});
+
+
+</script>
+{% endblock %}
+
+{# TEST Merge #}

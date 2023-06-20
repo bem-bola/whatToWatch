@@ -1,0 +1,78 @@
+  <footer class="text-center text-lg-start darkCustom">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row justify-content-center">
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase text-grey-custom text-center">Meilleurs films</h6>
+
+        <ul class="list-unstyled mb-0">
+          <li class="text-center">
+            <a href="{{ path('movie_serie_show', {'id': 5}) }}" class="colorLink linkFooter ">Deadpool 2</a>
+          </li>
+          <li class="text-center"> 
+            <a href="{{ path('movie_serie_show', {'id': 58}) }}" class="colorLink linkFooter ">Les Figures de l'ombre</a>
+          </li>
+          <li class="text-center">
+            <a href="{{ path('movie_serie_show', {'id': 3}) }}" class="colorLink linkFooter ">La Planète des Singes: Suprématie</a>
+          </li>
+          <li class="text-center"> 
+             <a href="{{ path('movie_serie_show', {'id': 150}) }}" class="colorLink linkFooter ">Rogue One: A Star Wars Story</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase text-grey-custom text-center">Meilleures séries</h6>
+
+        <ul class="list-unstyled">
+          <li class="text-center">
+             <a href="{{ path('movie_serie_show', {'id': 111}) }}" class="colorLink linkFooter ">Lupin</a>
+          </li>
+          <li class="text-center">
+            <a href="{{ path('movie_serie_show', {'id': 105}) }}" class="colorLink linkFooter ">Snowpiercer</a>
+          </li>
+          <li class="text-center">
+            <a href="{{ path('movie_serie_show', {'id': 159}) }}" class="colorLink linkFooter ">Futurama</a>
+          </li>
+          <li class="text-center">
+             <a href="{{ path('movie_serie_show', {'id': 53}) }}" class="colorLink linkFooter ">Marvel's Agents of S.H.I.E.L.D</a>
+          </li>
+      
+        </ul>
+      </div>
+  
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h6 class="text-uppercase text-grey-custom text-center">Nous contacter</h6>
+
+        <p class="text-grey-custom text-center" > 
+          <a href="{{ path('contact_new') }}" class="colorLink linkFooter ">Formulaire de contact</a> <br>
+          <a href="mailto:contact@w2w.com" class="colorLink linkFooter ">Par mail</a>
+        </p>
+
+       <div class="container-reseaux d-flex justify-content-center">
+          <div class="reseau border-reseau" id="fb"> <a href="https://www.facebook.com/" target="_bank"></a></div>
+          <div class="reseau border-reseau text-center" id="inst"> <a href="https://www.instagram.com/?hl=fr" target="_bank"><i class="fab fa-instagram"></i></a></div>
+          <div class="reseau border-reseau" id="twi"> <a href="https://twitter.com/?lang=fr" target="_bank"></a></div>
+       </div>
+
+      </div>
+      
+    </div>
+   
+  </div>
+ 
+
+  <!-- Copyright -->
+  <div class="text-center text-grey-custom bg-darkCustom d-flex justify-content-center">
+    
+    <p class="me-3"><a href="{{ asset('pdf/mentionlegale.pdf')}}" target=" _bank" class="colorLink linkFooter ">Mentions légales</a></p>
+    <p class="me-3">© 2021, w2w</p>
+  </div>
+  <!-- Copyright -->
+</footer>
+

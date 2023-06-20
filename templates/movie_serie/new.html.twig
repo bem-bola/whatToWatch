@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}New MovieSerie{% endblock %}
+
+{% block body %}
+
+
+    <h3 class="text-center p-3">Ajouter un film ou une série</h3>
+
+    {{ include('movie_serie/_form.html.twig') }}
+<div class="d-flex justify-content-center">
+    <a href="{{ path('home') }}" class="text-ecnetr">Retour à la liste</a>
+
+</div>
+
+{% endblock %}

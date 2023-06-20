@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+
+
+                                    {#################################### carousel #######################################}
+
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-pause="false">
+
+  <ol class="carousel-indicators">
+    <li data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"></li>
+    <li data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></li>
+    <li data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></li>
+  </ol>
+                         {# liste-carousel #}
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="5500" data-bs-pause="false">
+      <img src="{{ asset('images/best-films-w2w.jpg')}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption  d-md-block">
+        <h5>What2Watch.com</h5>
+        <p>Le moteur de recherche pour découvrir où regarder des films et séries en streaming légal !</p>
+      </div>
+    </div>
+
+{% for movie_serie in movie_series %}
+    <div class="carousel-item" data-bs-interval="5000">
+      <img src="{{ asset('images/uploads/' ~ movie_serie.imgHeader)}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption  d-md-block">
+        <h5 class='text-center'>{{ movie_serie.title }}   
+                     {% if movie_serie.plateforme == 'prime_video' %}
+                    <img src="{{ asset('images/logo/prime_video.png') }}" class="icon_plateforme_show_movie" style="margin-left:10px">
+                    {% elseif movie_serie.plateforme == 'netflix' %}
+                    <img src="{{ asset('images/logo/netflix.svg') }}" class="icon_plateforme_show_movie" style="margin-left:10px">
+                    {% elseif movie_serie.plateforme == 'disney+' %}
+                    <img src="{{ asset('images/logo/disney.png') }}" class="icon_plateforme_show_movie" style="margin-left:10px">
+                    {% elseif movie_serie.plateforme == 'youtube' %}
+                    <img src="{{ asset('images/logo/youtube.jpg') }}" class="icon_plateforme_show_movie" style="margin-left:10px">
+                    {% endif %}
+        </h5>        
+        <a href="{{ path('movie_serie_show', {'id': movie_serie.id}) }}"><button class="text-center ba">Voir le film</button></a>
+      </div>
+    </div>
+{% endfor %}
+
+  </div>
+
+  
+
+  
+                           {# carousel boutton #}
+  <a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleDark" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+
+
+
+  
+
+<main>
+                                    {################################ filtre ###################################}
+                                  
+
+<div class="filtre">
+
+                                  {# plateforme #}
+
+   
+  <div class="custom-dropdown">  
+      <select name="plat" id="plat-select"  class="filter-select dropdown">
+      
+        <option value="none">Plateforme</option>
+        <option value="netflix">Netflix</option>
+        <option value="prime_video">Amazon Prime</option>
+        <option value="disney">disney+</option>
+        <option value="youtube">Youtube</option>
+
+      </select>
+   </div>
+      
+                                  {# Date de sortie #}
+
+  <div class="custom-dropdown"> 
+    <select name="date" id="date-select" class="filter-select dropdown" placeholder="Date">
+        <option value="none">Date de sortie</option>
+
+        {% for year in years %}
+          <option value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+         
+   </select>
+  </div>
+                                  {# Genres #}
+
+  <div class="custom-dropdown"> 
+    <select name="genre" id="genre-select" class="filter-select dropdown" placeholder="Genre">
+        <option value="" class="text-white">Genres</option>
+      {% for genre in genres %}
+            <option value="{{ genre.id }}">{{ genre.name | capitalize }}</option>     
+      {% endfor %}    
+    </select>
+   </div>
+         
+  
+
+
+                                      {# type #}
+
+       <div class="custom-dropdown"> 
+
+          <select name="type" id="type-select" class="filter-select dropdown" placeholder="Type">
+              <option value="none">Type</option>
+              <option value="serie">Série</option>
+              <option value="film">Film</option>
+          </select>
+
+     </div>
+         
+  
+</div>
+<div class="titre-filtre"><h2 id="description" >Recommandation:</h2> </div>
+
+
+
+
+
+                   {########################## liste film #######################################}
+
+
+   <div class="d-flex flex-wrap" id="movie-serie-result" style="min-height:30vh">
+     
+    {% for movie_serie in movie_series %}
+    {# {{dump(movie_serie)}} #}
+        <a href="{{ path('movie_serie_show', {'id': movie_serie.id}) }}"> 
+          <div class="card m-5" style="width: 18rem;">
+          {% if (movie_serie.type == "Série" or movie_serie.type == "serie" ) %}
+                    <span class="cate bgSerie">{{ movie_serie.type }}</span>
+                    {% else %}
+                    <span class="cate bgFilm">{{ movie_serie.type }}</span>
+                  {% endif %}
+            <div class="div-image">
+                               
+                <img src="{{ asset('images/uploads/' ~ movie_serie.imgAffiche)}}" class="card-img-top" alt="...">
+                <p class=" card-hover ">{{ movie_serie.title }}</p>
+                <p class="synopsis">{{movie_serie.description|length > 100 ? movie_serie.description |slice(0, 100) ~ '...' : movie_serie.description }}</p>
+
+            </div>
+            <div class="card-body">
+                  <p class="card-text">{{ movie_serie.title }}</p>
+                  <span class="duree">{{ transformMinutesHours(movie_serie.duree) }}</span>
+                  <span class="date">{{ movie_serie.dateSortieAt ? movie_serie.dateSortieAt|date('Y') : '' }}</span>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    
+</div>
+</main>
+{% endblock %}

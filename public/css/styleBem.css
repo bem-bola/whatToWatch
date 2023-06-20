@@ -1,0 +1,274 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none !important;
+}
+
+.text-grey-custom{
+    color: #b3b3bb !important
+}
+
+.bg-darkCustom{
+    background-color: #1e272e !important;
+}
+
+.darkCustom{
+    background-color: #0E1111 !important;
+}
+body{
+    color: white;
+}
+
+/* **************************************************
+HomePage
+*/
+
+
+
+/* **************************************************
+Header
+*/
+
+
+/* Bar de recherche */
+#searchInput{
+    width: 100% !important;
+    border: 1px solid #b3b3bb !important;
+    border-radius: 5px;
+    padding: 1%;
+}
+
+.icon-search{
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+  
+#burger{
+    background-color: #b3b3bb !important;
+}
+
+#nav-item-content {
+    width: 100%;
+}
+
+#nav-item-content li i{
+    font-size: 200%;
+}
+
+
+/* **************************************************
+Page d'ajout film & serie
+*/
+
+/* Div contenant les input */
+.formNew div div{
+    width: 90%;
+    margin-left: 3.333%;
+    margin-bottom: 0.5%
+}
+
+
+/* Tous input sauf les checkbox */
+.formNew div div input:not(input[type="checkbox"]), .formNew div div textarea{
+    width: 100%;
+}
+
+/* checkbox */
+#movie_serie_genres label{
+    margin: 1% 5% 1% 1%;
+}
+
+.containerInput div{
+    width: 100%;
+}
+
+/*CONTACT
+*/
+.containerInput{
+    width: 30%;
+   margin-left: 35%;
+}
+.containerInput input{
+    margin-bottom: 4%;
+}
+
+
+
+
+/* **************************************************
+Page accueil
+*/
+
+.bgSerie{
+    background: rgb(57, 74, 168) !important;
+}
+
+.bgFilm{
+    background: rgb(214, 78, 4) !important;
+}
+
+#main-content{
+    min-height: 69vh;
+}
+
+
+/*page send.html
+****************/
+.alert{
+    width: 50%;
+}
+
+
+/*page d'inscription
+************************/
+
+#registration_form_agreeTerms{
+    margin-left: 2%;
+}
+
+
+/* **************************************************
+Footer
+*/
+
+footer{
+    border-top: 1px solid #b3b3bb;
+}
+/* lien footer */
+.colorLink{
+    color: #699ede
+}
+
+.reseau {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    margin: 2%;
+  }
+
+.reseau a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#fb{
+    background-image: url("../images/reseaux/fb.svg");
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position: center;
+}
+/* instagram */
+.fab{
+    color:  #b3b3bb;
+   
+}
+
+#twi{
+    background-image: url("../images/reseaux/twitter.svg");
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center;
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 0px) and (max-width: 575px){
+
+    .bande-annonce-responsive-show-large{
+        display: none;
+    }
+
+    #main-content{
+        min-height: 50vh;
+    }
+    .d-none-responsive{
+        margin-left: 2%;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px){
+
+    .containerCustom{
+        max-width:30% !important;
+        
+    }
+
+    #navbarSupportedContent{
+        background-color: rgba(30, 39, 46, 0.3) !important;
+    }
+
+
+    .contenair-alert{
+        margin-top: 20% !important;
+    }
+    
+   /*page show movie-serie*/
+
+    .bande-annonce-responsive-show-large{
+        display: none;
+    }
+    #main-content{
+        min-height: 59vh;
+    }
+    .navbar-nav li{
+        margin-left: 2%; 
+    }
+    .d-none-responsive{
+        margin-left: 2%;
+    }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 769px) and (max-width: 991px) {
+
+    .bande-annonce-responsive-show-large{
+        display: none;
+    }
+    #main-content{
+        min-height: 65vh;
+    }
+     /* NAv bar */
+     .navbar-nav li{
+        margin-left: 2%; 
+    }
+    .d-none-responsive{
+        margin-left: 2%;
+    }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media screen and (min-width: 992px) and (max-width: 1399px) {
+    .bande-annonce-responsive-show-meduim{
+        display: none;
+    }
+    #main-content{
+        min-height: 74vh;
+    }
+    /* NAv bar */
+    .navbar-nav li{
+        margin-left: 2%; 
+    }
+    .d-none-responsive{
+        display: none;
+    }
+    
+ }
+
+ @media screen and (min-width: 1400px){
+    .bande-annonce-responsive-show-meduim{
+        display: none;
+    }
+   /* nav bar */
+    .navbar-nav li{
+        margin-right: 10%; 
+    }
+   .d-none-responsive{
+       display: none;
+   }
+ }
+

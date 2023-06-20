@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MovieSerie index{% endblock %}
+
+{% block body %}
+    <h1>MovieSerie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Origine</th>
+                <th>Img_affiche</th>
+                <th>Img_header</th>
+                <th>Realisateur</th>
+                <th>Date_sortieAt</th>
+                <th>Acteur</th>
+                <th>NbSaison</th>
+                <th>Plateforme</th>
+                <th>Bande_annonce</th>
+                <th>Lien_redirection</th>
+                <th>Duree</th>
+                <th>Type</th>
+            
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {# {% for movie_serie in movie_series %}
+           
+            <tr>
+                <td>{{ movie_serie.id }}</td>
+                <td>{{ movie_serie.title }}</td>
+                <td>{{ movie_serie.description }}</td>
+                <td>{{ movie_serie.origine }}</td>
+                <td>{{ movie_serie.imgAffiche }}</td>
+                <td>{{ movie_serie.imgHeader }}</td>
+                <td>{{ movie_serie.realisateur }}</td>
+                <td>{{ movie_serie.dateSortieAt ? movie_serie.dateSortieAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ movie_serie.acteur }}</td>
+                <td>{{ movie_serie.nbSaison }}</td>
+                <td>{{ movie_serie.plateforme }}</td>
+                <td>{{ movie_serie.bandeAnnonce }}</td>
+                <td>{{ movie_serie.lienRedirection }}</td>
+                <td>{{ movie_serie.duree }}</td> #}
+                {# <td>{{ movie_serie.getGenres()|join(",") }}</td> #}
+                {# <td>{{ movie_serie.type }}</td>
+                <td>
+                    <a href="{{ path('movie_serie_show', {'id': movie_serie.id}) }}">show</a>
+                    <a href="{{ path('movie_serie_edit', {'id': movie_serie.id}) }}">edit</a>
+                </td>
+            </tr> #}
+        {# {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody> #}
+    </table>
+
+    <a href="{{ path('movie_serie_new') }}">Create new</a>
+{% endblock %}
