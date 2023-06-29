@@ -1,0 +1,55 @@
+version: "3.8"
+services:
+    # Mysql database container
+    # db:
+    #     image: mysql
+    #     container_name: w2w_mysql
+    #     restart: always
+    #     volumes:
+    #         - db-data:/var/lib/mysql
+    #     command: --default-authentication-plugin=mysql_native_password
+    #     environment:
+    #         MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+    #         MYSQL_DATABASE: w2w_bdd
+    #         # So you don't have to use root, but you can if you like
+    #         MYSQL_USER: user_w2w
+    #         # You can use whatever password you like
+    #         MYSQL_PASSWORD: RootDev-243
+    #         # Password for root access
+    #         MYSQL_ROOT_PASSWORD: RootDev-243
+    #     networks:
+    #         - w2w
+
+    # # phpmyadmin container
+    # phpmyadmin:
+    #     image: phpmyadmin
+    #     container_name: w2w_phpmyadmin
+    #     restart: always
+    #     depends_on:
+    #         - db
+    #     ports:
+    #         - 8090:80
+    #     environment:
+    #         PMA_HOST: db
+    #     networks:
+    #         - w2w
+
+    # La conficugation docker créée location on l'envoie on container
+    www:
+      build: docker
+      container_name: w2w
+      ports:
+        - "8845:80"
+      restart: always
+      volumes:
+        - ./docker/vhosts:/etc/apache2/site-enabled
+        - ./:/var/www
+      networks:
+          - w2w
+      
+
+networks:
+    w2w:
+
+# volumes:
+#     db-data:
